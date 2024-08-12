@@ -18,16 +18,29 @@ const multiplicacion = (n1, n2) => {
 
 // App
 const app = express();
+
 app.get('/', (req, res) => {
-	const resultado = multiplicacion(3, 4);
+	// Obtener los valores de los query parameters
+	const n1 = parseFloat(req.query.n1);
+	const n2 = parseFloat(req.query.n2);
+
+	// Verificar que los parámetros sean números válidos
+	if (isNaN(n1) || isNaN(n2)) {
+		res.status(400).send('Por favor, proporcione números válidos para n1 y n2.');
+		return;
+	}
+
+	// Calcular el resultado de la multiplicación
+	const resultado = multiplicacion(n1, n2);
+
+	// Responder con el resultado
 	res.send(`Hello remote world!\nEl resultado de la multiplicación es: ${resultado}`);
 });
 
-// Iniciar el servidor solo si el archivo es ejecutado directamente
-if (require.main === module) {
-	app.listen(PORT, HOST);
-	console.log(`Running on http://${HOST}:${PORT}`);
-}
+
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
+
 
 // Exportar la función para usarla en las pruebas
 module.exports = {
