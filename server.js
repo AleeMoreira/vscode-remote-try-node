@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, HOST, () => {
-        console.log(Running on http://${HOST}:${PORT});
+        console.log(`Running on http://${HOST}:${PORT}`);
     });
 }
 
