@@ -38,9 +38,11 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
-
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, HOST, () => {
+        console.log(Running on http://${HOST}:${PORT});
+    });
+}
 
 // Exportar la función para usarla en las pruebas
 module.exports = {
