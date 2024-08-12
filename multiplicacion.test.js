@@ -1,4 +1,4 @@
-const { multiplicacion } = require('./server'); // Asegúrate de ajustar el path según corresponda
+const { multiplicacion } = require('./server');
 
 describe('Función multiplicación', () => {
   test('debería multiplicar 2 números correctamente', () => {
